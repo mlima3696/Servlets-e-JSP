@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>Bem vindo ao curso de JSP</h1>
-<% out.print("Seu sucesso garantido");%>
+<%="Seu sucesso garantido..."%>
 
 <form action="receber-nome.jsp">
 <input type="text" id="nome" name="nome">
