@@ -7,12 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Bem vindo ao curso de JSP</h1>
-<% out.print("Seu sucesso garantido");%>
-
-<form action="receber-nome.jsp">
-<input type="text" id="nome" name="nome">
-<input type="submit" value="Enviar"/>
-</form>
+<% 
+String nome = "Nome recebido: " + request.getParameter("nome");
+out.print(nome); 
+%>
 </body>
 </html>
