@@ -8,8 +8,11 @@
 </head>
 <body>
 <%=
-
 "Nome recebido: " + request.getParameter("nome")
 %>
+<br/>
+<%response.sendRedirect("https://g1.globo.com/"); %>
+
+
 </body>
 </html>
