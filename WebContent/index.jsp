@@ -21,6 +21,8 @@ public int retorna(int n){
 %>
 <%= cont%>
 <br/>
-<%=retorna(8) %>
+<%=retorna(8)%>
+<br/>
+<%=application.getInitParameter("Estado") %>
 </body>
 </html>
