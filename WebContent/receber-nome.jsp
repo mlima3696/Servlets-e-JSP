@@ -11,7 +11,9 @@
 "Nome recebido: " + request.getParameter("nome")
 %>
 <br/>
-<%response.sendRedirect("https://g1.globo.com/"); %>
+<%=
+session.getAttribute("curso")
+%>
 
 
 </body>
