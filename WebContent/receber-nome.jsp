@@ -7,14 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%=
-"Nome recebido: " + request.getParameter("nome")
-%>
-<br/>
-<%=
-session.getAttribute("curso")
+<%@ page isErrorPage="true"
+
 %>
 
-
+<%= exception %>
 </body>
 </html>

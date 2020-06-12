@@ -7,13 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Bem vindo ao curso de JSP</h1>
-<%="Seu sucesso garantido..."%>
-
-<form action="receber-nome.jsp">
-<input type="text" id="nome" name="nome">
-<input type="submit" value="Enviar"/>
-</form>
-<%session.setAttribute("curso", "curso de jsp");%>
+<%--  <%@page import="java.util.Date" %>
+<%@ page info="Pagina do curso de JSP" %>
+<%="Data de Hoje: " + new Date() %>--%>
+<%@ page errorPage="receber-nome.jsp" %>
+<%=100/2 %>
 </body>
 </html>
