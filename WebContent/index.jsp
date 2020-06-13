@@ -11,6 +11,18 @@
 </head>
 <body>
 	<h1>Index</h1>
-	<%= calcula.calcula(78) %>
+	<br/>
+	<form action="cabecalho.jsp" method="post">
+	
+	<input type="text" id="nome" name="nome">
+		<br/>
+	<input type="text" id="ano" name="ano">
+		<br/>
+	<input type="text" id="sexo" name="sexo">
+		<br/>
+	
+	<input type="submit" value="testar"/>
+	</form>
+	
 </body>
 </html>
