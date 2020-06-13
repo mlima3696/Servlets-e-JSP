@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="myprefix" uri="WEB-INF/testetag.tld"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -8,9 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Index</h1>
-<jsp:forward page="receber-nome.jsp">
-<jsp:param value="Site Java Avancado" name="paramforward"/>
-</jsp:forward>
+	<h1>Index</h1>
+	<jsp:include page="cabecalho.jsp"/>
+	<h3>9999999999999999 88888888888 0000000000000</h3>
+	<jsp:include page="rodape.jsp"></jsp:include>
 </body>
 </html>
