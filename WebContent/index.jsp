@@ -12,17 +12,9 @@
 <body>
 	<h1>Index</h1>
 	<br/>
-	<form action="cabecalho.jsp" method="post">
 	
-	<input type="text" id="nome" name="nome">
-		<br/>
-	<input type="text" id="ano" name="ano">
-		<br/>
-	<input type="text" id="sexo" name="sexo">
-		<br/>
-	
-	<input type="submit" value="testar"/>
-	</form>
+	<%session.setAttribute("user", "java-avancado"); %>
+	<a href="cabecalho.jsp">Ver teste</a>
 	
 </body>
 </html>

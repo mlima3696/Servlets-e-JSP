@@ -9,11 +9,6 @@
 </head>
 <body>
 	<jsp:setProperty property="*" name="calcula"/>
-	<h3>Cabecalho</h3>
-	<jsp:getProperty property="nome" name="calcula"/>
-	<br/>
-	<jsp:getProperty property="ano" name="calcula"/>
-	<br/>
-	<jsp:getProperty property="sexo" name="calcula"/>
+	${sessionScope.user}
 </body>
 </html>
