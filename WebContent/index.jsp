@@ -8,7 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@ include file="pagina-include.jsp" %>
-<myprefix:minhatag/>
+<h1>Index</h1>
+<jsp:forward page="receber-nome.jsp">
+<jsp:param value="Site Java Avancado" name="paramforward"/>
+</jsp:forward>
 </body>
 </html>

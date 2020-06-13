@@ -7,10 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@ page isErrorPage="true"
-
-%>
-
-<%= exception %>
+<h1>Receber nome</h1>
+<%= request.getParameter("paramforward") %>
 </body>
 </html>
