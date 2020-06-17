@@ -62,15 +62,16 @@ Item : ${n}
 Nome: <c:out value="${nome}"></c:out>
 <br/>
 </c:forTokens>
--->
+-----------
 <c:set var="numero" value="${100/3}"/>
 
 <c:url value="/acessoliberado.jsp" var="acesso">
 <c:param name="para1" value="111" />
 <c:param name="para2" value="112" />
-</c:url>
-
 ${acesso}
+</c:url>
+-->
+
 
 <p/>
 <p/>

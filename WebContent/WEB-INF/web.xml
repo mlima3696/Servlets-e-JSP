@@ -8,4 +8,9 @@
     <param-name>Estado</param-name>
     <param-value>MA</param-value>
   </context-param>
+  
+  <filter>
+  <filter-name>filter</filter-name>
+  <filter-class>filter.Filter</filter-class>
+  </filter>
 </web-app>
