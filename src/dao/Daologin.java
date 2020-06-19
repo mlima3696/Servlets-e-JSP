@@ -17,7 +17,7 @@ public class Daologin {
 	}
 	
 	public boolean validarLogin(String login,String senha) throws Exception{
-		String sql = "select*from usuario where login= '"+login+"' and senha = '"+senha+"' and senha= '"+senha+"'";
+		String sql = "select*from usuario where login = '"+login+"' and senha = '"+senha+"'";
 		PreparedStatement statement = connection.prepareStatement(sql);
 		ResultSet resultSet = statement.executeQuery();
 		
