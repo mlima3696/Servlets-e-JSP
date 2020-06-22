@@ -26,6 +26,28 @@ public class Usuario extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		try {
+		String acao =request.getParameter("acao");
+		String user =request.getParameter("user");
+		
+		if(acao.equalsIgnoreCase("delete")) {
+			daoUsuario.delete(user);
+			RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
+			request.setAttribute("usuarios", daoUsuario.listar());
+			view.forward(request, response);
+			}else if(acao.equalsIgnoreCase("editar")) {
+				
+				BeansCursoJsp beansCursoJsp = daoUsuario.consultar(user);
+				
+				RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
+				request.setAttribute("user", beansCursoJsp);
+				view.forward(request, response);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,12 +62,14 @@ public class Usuario extends HttpServlet {
 		
 		daoUsuario.salvar(usuario);
 		
-		try {
-		RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
-		request.setAttribute("usuarios", daoUsuario.listar());
-		view.forward(request, response);
+		//Para ficar na mesma pagina apos cadastrar usuario
 		
-		}catch (Exception e) {
+		try {
+			RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
+			request.setAttribute("usuarios", daoUsuario.listar());
+			view.forward(request, response);
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

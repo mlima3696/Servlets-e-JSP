@@ -10,6 +10,7 @@ import java.util.List;
 import beans.BeansCursoJsp;
 import connection.SingleConnection;
 
+
 public class DaoUsuario {
 
 	private Connection connection;
@@ -57,4 +58,41 @@ public class DaoUsuario {
 		
 		return listar;
 	}
+	
+	public void delete(String login) {
+		
+		try {
+		String sql = "delete from usuario where login = '"+login+"'";
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		preparedStatement.execute();
+		
+		connection.commit();
+		}catch (Exception e) {
+			e.printStackTrace();
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		}
+	}
+
+	public BeansCursoJsp consultar(String login) throws Exception{
+		
+		String sql = "select * from usuario where login = '"+login+"'";
+		
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		ResultSet resultSet = preparedStatement.executeQuery();
+		
+		if(resultSet.next()) {
+			BeansCursoJsp beansCursoJsp = new BeansCursoJsp();
+			beansCursoJsp.setLogin(resultSet.getString("login"));
+			beansCursoJsp.setSenha(resultSet.getString("senha"));
+			
+			return beansCursoJsp;
+		}
+		
+		return null;
+	}
+	
 }
