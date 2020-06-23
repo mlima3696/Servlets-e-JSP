@@ -50,6 +50,7 @@ public class DaoUsuario {
 		while(resultSet.next()) {
 			
 			BeansCursoJsp beansCursoJsp = new BeansCursoJsp();
+			beansCursoJsp.setId(resultSet.getLong("id"));
 			beansCursoJsp.setLogin(resultSet.getString("login"));
 			beansCursoJsp.setSenha(resultSet.getString("senha"));
 			
@@ -86,6 +87,7 @@ public class DaoUsuario {
 		
 		if(resultSet.next()) {
 			BeansCursoJsp beansCursoJsp = new BeansCursoJsp();
+			beansCursoJsp.setId(resultSet.getLong("id"));
 			beansCursoJsp.setLogin(resultSet.getString("login"));
 			beansCursoJsp.setSenha(resultSet.getString("senha"));
 			
@@ -93,6 +95,28 @@ public class DaoUsuario {
 		}
 		
 		return null;
+	}
+
+	public void atualizar(BeansCursoJsp usuario) {
+		
+		
+		try {
+		String sql = "update usuario set login = ?, senha = ? where id = " + usuario.getId();
+		
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		preparedStatement.setString(1, usuario.getLogin());
+		preparedStatement.setString(2, usuario.getSenha());
+		preparedStatement.executeUpdate();
+		connection.commit();
+		
+		}catch (Exception e) {
+			e.printStackTrace();
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		}
 	}
 	
 }

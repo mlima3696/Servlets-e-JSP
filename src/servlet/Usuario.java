@@ -53,14 +53,23 @@ public class Usuario extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//doGet(request, response);
+		
+		String id = request.getParameter("id");
 		String login = request.getParameter("login");
 		String senha = request.getParameter("senha");
 		
 		BeansCursoJsp usuario = new BeansCursoJsp();
+		
+		usuario.setId(!id.isEmpty()? Long.parseLong(id):0);
 		usuario.setLogin(login);
 		usuario.setSenha(senha);
 		
-		daoUsuario.salvar(usuario);
+		if(id==null || id.isEmpty()) {
+			daoUsuario.salvar(usuario);
+		}else {
+			daoUsuario.atualizar(usuario);
+		}
+		
 		
 		//Para ficar na mesma pagina apos cadastrar usuario
 		
