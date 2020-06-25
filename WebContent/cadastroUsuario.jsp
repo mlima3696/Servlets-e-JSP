@@ -6,16 +6,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 <title>Cadastro de Usuário</title>
+
+<link  rel="stylesheet" href="resources/css/cadastro.css">
 </head>
 <body>
-	<h1>Cadastro de Usuário</h1>
-	<form action="salvarUsuario" method="post">
 
-		<table>
+	<center><h1>Cadastro de Usuário</h1></center>
+	<form action="salvarUsuario" method="post">
+<ul class="form-style-1"> <li>
+		<center><table></center>
 		<tr>
 				<td>Codigo:</td>
-				<td><input type="text" readonly="readonly" id="id" name="id" value="${user.id}"></td>
+				<td><input type="text" readonly="readonly" id="id" name="id" value="${user.id}" class="field-long"></td>
 			</tr>
 			<tr>
 				<td>Login:</td>
@@ -26,12 +30,18 @@
 				<td>Senha:</td>
 				<td><input type="password" id="senha" name="senha" value="${user.senha}"></td>
 			</tr>
-
+			<tr>
+			<td></td>
+			<td><input type="submit" value="Salvar"></td>
+			</tr>
 		</table>
-		<input type="submit" value="Salvar">
+		
+</li>
+</ul>
 	</form>
-
-	<table>
+	<div class="container">
+	<table class="responsive-table">
+	<caption>Usuários cadastrados</caption>
 		<c:forEach items="${usuarios}" var="user">
 			<tr>
 			<td style="width: 150px"><c:out value="${user.id}"></c:out>
@@ -44,6 +54,6 @@
 			</tr>
 		</c:forEach>
 	</table>
-
+</div>
 </body>
 </html>
