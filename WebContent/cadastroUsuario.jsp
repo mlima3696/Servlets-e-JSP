@@ -31,6 +31,10 @@
 				<td><input type="password" id="senha" name="senha" value="${user.senha}"></td>
 			</tr>
 			<tr>
+				<td>Nome:</td>
+				<td><input type="text" id="nome" name="nome" value="${user.nome}"></td>
+			</tr>
+			<tr>
 			<td></td>
 			<td><input type="submit" value="Salvar"></td>
 			</tr>
@@ -45,7 +49,7 @@
 			<tr>
 				<th>Id</th>
 				<th>Login</th>
-				<th>Senha</th>
+				<th>Nome</th>
 				<th>Delete</th>
 				<th>Editar</th>
 			</tr>
@@ -55,7 +59,7 @@
 				</td>
 				<td style="width: 150px"><c:out value="${user.login}"></c:out>
 				</td>
-				<td><c:out value="${user.senha}"></c:out></td>
+				<td><c:out value="${user.nome}"></c:out></td>
 				<td><a href="salvarUsuario?acao=delete&user=${user.login}"><img src="resources/img/excluir.png" alt="Excluir" title="Excluir" width="20px" height="20px"></a></td>
 				<td><a href="salvarUsuario?acao=editar&user=${user.login}"><img alt="Editar" title="Editar" src="resources/img/editar.png" width="20px" height="20px"></a></td>
 			</tr>
