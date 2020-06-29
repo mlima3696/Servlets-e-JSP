@@ -62,10 +62,10 @@ public class DaoUsuario {
 		return listar;
 	}
 	
-	public void delete(String login) {
+	public void delete(String id) {
 		
 		try {
-		String sql = "delete from usuario where login = '"+login+"'";
+		String sql = "delete from usuario where id = '"+id+"'";
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.execute();
 		
@@ -80,9 +80,9 @@ public class DaoUsuario {
 		}
 	}
 
-	public BeansCursoJsp consultar(String login) throws Exception{
+	public BeansCursoJsp consultar(String id) throws Exception{
 		
-		String sql = "select * from usuario where login = '"+login+"'";
+		String sql = "select * from usuario where id = '"+id+"'";
 		
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		ResultSet resultSet = preparedStatement.executeQuery();

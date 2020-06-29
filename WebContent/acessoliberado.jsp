@@ -9,7 +9,7 @@
 <body>
 <h3>Seja bem vindo ao sistema</h3>
 
-<a href="cadastroUsuario.jsp">Cadastro de usuários</a>
+<a href="salvarUsuario?acao=listartodos">Cadastro de usuários</a>
 
 </body>
 </html>

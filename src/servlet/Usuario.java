@@ -43,6 +43,10 @@ public class Usuario extends HttpServlet {
 				RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
 				request.setAttribute("user", beansCursoJsp);
 				view.forward(request, response);
+			}else if(acao.equalsIgnoreCase("listartodos")) {
+				RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
+				request.setAttribute("usuarios", daoUsuario.listar());
+				view.forward(request, response);
 			}
 
 		} catch (Exception e) {
@@ -53,6 +57,20 @@ public class Usuario extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//doGet(request, response);
+		
+		String acao= request.getParameter("acao");
+		
+		if(acao!=null && acao.equalsIgnoreCase("reset")) {
+			try {
+				RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
+				request.setAttribute("usuarios", daoUsuario.listar());
+				view.forward(request, response);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}else {
 		
 		String id = request.getParameter("id");
 		String login = request.getParameter("login");
@@ -82,6 +100,7 @@ public class Usuario extends HttpServlet {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			}
 		}
 	}
 
