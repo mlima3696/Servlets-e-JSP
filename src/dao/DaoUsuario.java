@@ -99,6 +99,23 @@ public class DaoUsuario {
 		
 		return null;
 	}
+	
+public boolean validarLogin(String login) throws Exception{
+		
+		String sql = "select count(1) as qtd from usuario where login = '"+login+"'";
+		
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		ResultSet resultSet = preparedStatement.executeQuery();
+		
+		if(resultSet.next()) {
+			
+			
+			return resultSet.getInt("qtd") <=0;//Return true
+		}
+		
+		return false;
+	}
+	
 
 	public void atualizar(BeansCursoJsp usuario) {
 		

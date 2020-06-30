@@ -84,16 +84,17 @@ public class Usuario extends HttpServlet {
 		usuario.setSenha(senha);
 		usuario.setNome(nome);
 		
-		if(id==null || id.isEmpty()) {
+		try {
+		if(id==null || id.isEmpty() && daoUsuario.validarLogin(login)) {
+			
 			daoUsuario.salvar(usuario);
-		}else {
+			
+		}else if(id!=null && !id.isEmpty()) {
 			daoUsuario.atualizar(usuario);
 		}
 		
-		
 		//Para ficar na mesma pagina apos cadastrar usuario
 		
-		try {
 			RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
 			request.setAttribute("usuarios", daoUsuario.listar());
 			view.forward(request, response);
