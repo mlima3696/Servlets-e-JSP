@@ -13,7 +13,10 @@
 </head>
 <body>
 
-	<center><h1>Cadastro de Usuário</h1></center>
+	<center>
+	<h1>Cadastro de Usuário
+	<h3 style="color: red;">${msg}</h3>
+	</h1></center>
 	<form action="salvarUsuario" method="post" id="formUser">
 <ul class="form-style-1"> <li>
 		<center><table></center>
@@ -35,8 +38,8 @@
 				<td><input type="text" id="nome" name="nome" value="${user.nome}"></td>
 			</tr>
 			<tr>
-			<td></td>
-			<td><input type="submit" value="Salvar"><input type="submit" value="Cancelar" onclick="document.getElementById('formUser').action='salvarUsuario?acao=reset'"></td>
+			<td><input type="submit" value="Salvar"></td>
+			<td><input type="submit" value="Cancelar" onclick="document.getElementById('formUser').action='salvarUsuario?acao=reset'"></td>
 			</tr>
 		</table>
 		
