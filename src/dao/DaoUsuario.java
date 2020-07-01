@@ -23,11 +23,13 @@ public class DaoUsuario {
 		
 		
 		try{
-		String sql = "insert into usuario(login,senha,nome) values(?,?,?)";
+		String sql = "insert into usuario(login,senha,nome,telefone) values(?,?,?,?)";
 		PreparedStatement insert = connection.prepareStatement(sql);
 		insert.setString(1, usuario.getLogin());
 		insert.setString(2, usuario.getSenha());
 		insert.setString(3, usuario.getNome());
+		insert.setString(4, usuario.getTelefone());
+		
 		insert.execute();
 		connection.commit();
 		
@@ -55,6 +57,8 @@ public class DaoUsuario {
 			beansCursoJsp.setLogin(resultSet.getString("login"));
 			beansCursoJsp.setSenha(resultSet.getString("senha"));
 			beansCursoJsp.setNome(resultSet.getString("nome"));
+			beansCursoJsp.setTelefone(resultSet.getString("telefone"));
+			
 			
 			listar.add(beansCursoJsp);
 		}
@@ -92,7 +96,8 @@ public class DaoUsuario {
 			beansCursoJsp.setId(resultSet.getLong("id"));
 			beansCursoJsp.setLogin(resultSet.getString("login"));
 			beansCursoJsp.setSenha(resultSet.getString("senha"));
-			beansCursoJsp.setSenha(resultSet.getString("nome"));
+			beansCursoJsp.setNome(resultSet.getString("nome"));
+			beansCursoJsp.setTelefone(resultSet.getString("telefone"));
 			
 			return beansCursoJsp;
 		}
@@ -121,12 +126,13 @@ public boolean validarLogin(String login) throws Exception{
 		
 		
 		try {
-		String sql = "update usuario set login = ?, senha = ? , nome = ? where id = " + usuario.getId();
+		String sql = "update usuario set login = ?, senha = ? , nome = ?, telefone =? where id = " + usuario.getId();
 		
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString(1, usuario.getLogin());
 		preparedStatement.setString(2, usuario.getSenha());
 		preparedStatement.setString(3, usuario.getNome());
+		preparedStatement.setString(4, usuario.getTelefone());
 		preparedStatement.executeUpdate();
 		connection.commit();
 		

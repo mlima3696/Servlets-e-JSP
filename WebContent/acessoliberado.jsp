@@ -9,7 +9,9 @@
 <body>
 <h3>Seja bem vindo ao sistema</h3>
 
-<a href="salvarUsuario?acao=listartodos">Cadastro de usuários</a>
+	<a href="salvarUsuario?acao=listartodos"><img
+		alt="Cadastro de Usuário" title="Cadastro de Usuário"
+		src="resources/img/image.png" width="150px" height="150px"></a>
 
 </body>
 </html>

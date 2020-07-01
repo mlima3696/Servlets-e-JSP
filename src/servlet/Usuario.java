@@ -76,6 +76,7 @@ public class Usuario extends HttpServlet {
 		String login = request.getParameter("login");
 		String senha = request.getParameter("senha");
 		String nome = request.getParameter("nome");
+		String telefone = request.getParameter("telefone");
 		
 		BeansCursoJsp usuario = new BeansCursoJsp();
 		
@@ -83,6 +84,7 @@ public class Usuario extends HttpServlet {
 		usuario.setLogin(login);
 		usuario.setSenha(senha);
 		usuario.setNome(nome);
+		usuario.setTelefone(telefone);
 		
 		try {
 			

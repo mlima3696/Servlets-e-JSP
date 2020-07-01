@@ -38,6 +38,10 @@
 				<td><input type="text" id="nome" name="nome" value="${user.nome}"></td>
 			</tr>
 			<tr>
+				<td>Telefone:</td>
+				<td><input type="text" id="telefone" name="telefone" value="${user.telefone}"></td>
+			</tr>
+			<tr>
 			<td><input type="submit" value="Salvar"></td>
 			<td><input type="submit" value="Cancelar" onclick="document.getElementById('formUser').action='salvarUsuario?acao=reset'"></td>
 			</tr>
@@ -53,8 +57,9 @@
 				<th>Id</th>
 				<th>Login</th>
 				<th>Nome</th>
-				<th>Delete</th>
+				<th>Telefone</th>
 				<th>Editar</th>
+				<th>Delete</th>
 			</tr>
 			<c:forEach items="${usuarios}" var="user">
 			<tr>
@@ -62,12 +67,14 @@
 				</td>
 				<td style="width: 150px"><c:out value="${user.login}"></c:out>
 				</td>
-					<td><c:out value="${user.nome}"></c:out></td>
-					<td><a href="salvarUsuario?acao=delete&user=${user.id}"><img
-							src="resources/img/excluir.png" alt="Excluir" title="Excluir"
-							width="20px" height="20px"></a></td>
+				<td><c:out value="${user.nome}"></c:out></td>
+				<td style="width: 150px"><c:out value="${user.telefone}"></c:out>
+				</td>
 					<td><a href="salvarUsuario?acao=editar&user=${user.id}"><img
 							alt="Editar" title="Editar" src="resources/img/editar.png"
+							width="20px" height="20px"></a></td>
+					<td><a href="salvarUsuario?acao=delete&user=${user.id}"><img
+							src="resources/img/excluir.png" alt="Excluir" title="Excluir"
 							width="20px" height="20px"></a></td>
 				</tr>
 		</c:forEach>

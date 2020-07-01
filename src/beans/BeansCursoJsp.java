@@ -6,6 +6,7 @@ public class BeansCursoJsp {
 	private String senha;
 	private Long id;
 	private String nome;
+	private String telefone;
 	
 	
 	
@@ -33,7 +34,12 @@ public class BeansCursoJsp {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
+	public String getTelefone() {
+		return telefone;
+	}
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
 	
 	
 	
