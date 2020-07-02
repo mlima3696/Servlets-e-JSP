@@ -80,7 +80,7 @@ public class Usuario extends HttpServlet {
 		
 		BeansCursoJsp usuario = new BeansCursoJsp();
 		
-		usuario.setId(!id.isEmpty()? Long.parseLong(id):0);
+		usuario.setId(!id.isEmpty()? Long.parseLong(id):null);
 		usuario.setLogin(login);
 		usuario.setSenha(senha);
 		usuario.setNome(nome);
@@ -114,7 +114,9 @@ public class Usuario extends HttpServlet {
 			}
 		}
 		
-		
+		if(!podeInserir) {
+			request.setAttribute("user", usuario);
+		}
 		
 		//Para ficar na mesma pagina apos cadastrar usuario
 		
