@@ -87,18 +87,34 @@ public class Usuario extends HttpServlet {
 		usuario.setTelefone(telefone);
 		
 		try {
+			String msg = null;
+			boolean podeInserir = true;
 			
 		if(id==null || id.isEmpty() && !daoUsuario.validarLogin(login)) {
 			request.setAttribute("msg", "Usuário já existe com o mesmo login!");
+			podeInserir = false;
+		}
+		else if(id==null || id.isEmpty() && !daoUsuario.validarSenha(senha)) {
+			request.setAttribute("msg", "Usuário já existe com a mesma senha!");
+			podeInserir = false;
 		}
 			
-		if(id==null || id.isEmpty() && daoUsuario.validarLogin(login)) {
-			
+		if(msg != null) {
+			request.setAttribute("msg", msg);
+		}
+		else if(id==null || id.isEmpty() && daoUsuario.validarLogin(login) && daoUsuario.validarSenha(senha)) {
 			daoUsuario.salvar(usuario);
 			
-		}else if(id!=null && !id.isEmpty()) {
+		}if(id!=null && !id.isEmpty() && daoUsuario.validarLoginUpdate(login, id)) {
+			if(!daoUsuario.validarLoginUpdate(login, id)) {
+				request.setAttribute("msg", "Usuário já existe com o mesmo login!");
+			}
+			else if (id !=null && !id.isEmpty() && podeInserir){
 			daoUsuario.atualizar(usuario);
+			}
 		}
+		
+		
 		
 		//Para ficar na mesma pagina apos cadastrar usuario
 		
