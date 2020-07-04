@@ -89,21 +89,23 @@ public class Usuario extends HttpServlet {
 		try {
 			String msg = null;
 			boolean podeInserir = true;
-
-				if (login == null || login.isEmpty()) {
-					msg = "Login deve ser informado";
-					podeInserir=false;
-
-				} else if (senha == null || senha.isEmpty()) {
-					msg = "Senha deve ser informada";
-					podeInserir=false;
-				} else if (nome == null || nome.isEmpty()) {
-					msg = "Nome deve ser informado";
-					podeInserir=false;
-				} else if (telefone == null || telefone.isEmpty()) {
-					msg = "Telefone deve ser informado";
-					podeInserir=false;
-				}
+			
+			if(login == null || login.isEmpty()) {
+				msg = "Login deve ser informado";
+				podeInserir=false;
+			}
+			else if(senha == null || senha.isEmpty()) {
+				msg = "Senha deve ser informada";
+				podeInserir=false;
+			}
+			else if(nome == null || nome.isEmpty()) {
+				msg = "Nome deve ser informado";
+				podeInserir=false;
+			}
+			else if(telefone == null || telefone.isEmpty()) {
+				msg = "Telefone deve ser informado";
+				podeInserir=false;
+			}
 			
 			else if(id==null || id.isEmpty() && !daoUsuario.validarLogin(login)) {
 			request.setAttribute("msg", "Usuário já existe com o mesmo login!");
@@ -120,7 +122,7 @@ public class Usuario extends HttpServlet {
 		else if(id==null || id.isEmpty() && daoUsuario.validarLogin(login) && daoUsuario.validarSenha(senha)) {
 			daoUsuario.salvar(usuario);
 			
-		}if(id!=null && !id.isEmpty() && daoUsuario.validarLoginUpdate(login, id)) {
+		}else if(id!=null && !id.isEmpty() && daoUsuario.validarLoginUpdate(login, id)) {
 			if(!daoUsuario.validarLoginUpdate(login, id)) {
 				request.setAttribute("msg", "Usuário já existe com o mesmo login!");
 			}

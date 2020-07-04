@@ -78,30 +78,56 @@ public class Produtos extends HttpServlet {
 			String quantidade = request.getParameter("quantidade");
 			String valor = request.getParameter("valor");
 
-			BeansProduto produto = new BeansProduto();
+			/*BeansProduto produto = new BeansProduto();
 			produto.setId(!id.isEmpty() ? Long.parseLong(id) : null);
 			produto.setNome(nome);
 			produto.setQuantidade(Double.parseDouble(quantidade));
-			produto.setValor(Double.parseDouble(valor));
-			try {
+			produto.setValor(Double.parseDouble(valor));*/
 
+			try {
 				String msg = null;
 				boolean podeInserir = true;
+				
+				 if(quantidade==null || quantidade.isEmpty() ) {
+					msg="Quantidade deve ser informada";
+					podeInserir=false;
+				}
+				 else if(valor==null || valor.isEmpty() ) {
+					msg="Valor R$ deve ser informado";
+					podeInserir=false;
+				}
+				 
+				 
+				 else if(nome==null || nome.isEmpty() ) {
+					msg="Nome deve ser informado";
+					podeInserir=false;
+				}
+				
+				
 
-				if (id == null || id.isEmpty() && !daoProduto.validarNome(nome)) {//Quando for produto novo
-																					
-																				
-																					
+				else if (id == null || id.isEmpty() && !daoProduto.validarNome(nome)) {//Quando for produto novo															
 					msg = "Produto já existe com o mesmo nome!";
 					podeInserir = false;
 
 				}
+				 
+				 BeansProduto produto = new BeansProduto();
+					produto.setNome(nome);
+					
+					produto.setId(!id.isEmpty() ? Long.parseLong(id) : null);
+
+					if (quantidade != null && !quantidade.isEmpty()) {
+						produto.setQuantidade(Double.parseDouble(quantidade));
+					}
+
+					 if (valor != null && !valor.isEmpty())
+						produto.setValor(Double.parseDouble(valor));
 
 				if (msg != null) {
 					request.setAttribute("msg", msg);
 				}
 
-				if (id == null || id.isEmpty() && daoProduto.validarNome(nome)
+				else if (id == null || id.isEmpty() && daoProduto.validarNome(nome)
 						&& podeInserir) {
 
 					daoProduto.salvar(produto);

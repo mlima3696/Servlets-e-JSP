@@ -63,12 +63,13 @@ public class DaoProduto {
 	
 	public void delete(String id) {
 		try {
-		String sql = "delete * from produtos where id = '"+id+"'";
+		String sql = "delete from produtos where id = '"+id+"'";
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.execute();
 		
 		connection.commit();
 	}catch (Exception e) {
+		e.printStackTrace();
 		try {
 			connection.rollback();
 		} catch (SQLException e1) {
