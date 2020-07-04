@@ -39,10 +39,7 @@ public class DaoProduto {
 			e.printStackTrace();
 		}
 	}
-	public void salvarProduto(BeansProduto produto){
-		
-		
-	}
+	
 	
 	public List<BeansProduto> listar() throws Exception{
 		List<BeansProduto> listar = new ArrayList<BeansProduto>();
