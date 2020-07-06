@@ -12,7 +12,8 @@
 <link  rel="stylesheet" href="resources/css/cadastro.css">
 </head>
 <body>
-
+<a href="acessoliberado.jsp" >Inicío</a>
+<a href="index.jsp" >Sair</a>
 	<center>
 	<h1>Cadastro de Usuário
 	<h3 style="color: red;">${msg}</h3>
