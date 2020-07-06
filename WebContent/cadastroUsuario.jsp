@@ -10,6 +10,12 @@
 <title>Cadastro de Usuário</title>
 
 <link  rel="stylesheet" href="resources/css/cadastro.css">
+
+ <!-- Adicionando JQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+
 </head>
 <body>
 <a href="acessoliberado.jsp" >Inicío</a>
@@ -41,6 +47,31 @@
 			<tr>
 				<td>Telefone:</td>
 				<td><input type="text" id="telefone" name="telefone" value="${user.telefone}"></td>
+			</tr>
+						<tr>
+							<td>CEP:</td>
+							<td><input type="text" id="cep" name="cep"
+								onblur="consultaCep();"></td>
+						</tr>
+						<tr>
+							<td>Rua:</td>
+							<td><input type="text" id="rua" name="rua"></td>
+						</tr>
+						<tr>
+							<td>Bairro:</td>
+							<td><input type="text" id="bairro" name="bairro"></td>
+						</tr>
+						<tr>
+							<td>Cidade:</td>
+							<td><input type="text" id="cidade" name="cidade"></td>
+						</tr>
+						<tr>
+							<td>Estado:</td>
+							<td><input type="text" id="estado" name="estado"></td>
+						</tr>
+						<tr>
+			<td>IBGE:</td>
+			<td><input type="text" id="ibge" name="ibge" ></td>
 			</tr>
 			<tr>
 			<td><input type="submit" value="Salvar"></td>
@@ -101,6 +132,37 @@ function validarCampos() {
 	
 	return true;
 }
+
+function consultaCep() {
+	var cep = $("#cep").val();
+	
+	//https://viacep.com.br/
+	//https://viacep.com.br/exemplo/jquery/
+	//Consulta o webservice viacep.com.br/
+    $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+
+    	
+        if (!("erro" in dados)) {
+        	 $("#rua").val(dados.logradouro);
+        	 $("#bairro").val(dados.bairro);
+        	 $("#cidade").val(dados.localidade);
+        	 $("#estado").val(dados.uf);
+             $("#ibge").val(dados.ibge);
+        } //end if.
+        else {
+             $("#cep").val('');
+             $("#rua").val('');
+        	 $("#bairro").val('');
+        	 $("#cidade").val('');
+        	 $("#estado").val('');
+             $("#ibge").val('');
+            //CEP pesquisado não foi encontrado.
+            alert("CEP não encontrado.");
+        }
+    });
+
+}
+
 </script>
 </body>
 </html>
