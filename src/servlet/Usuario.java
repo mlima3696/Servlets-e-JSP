@@ -153,6 +153,7 @@ public class Usuario extends HttpServlet {
 		
 			RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
 			request.setAttribute("usuarios", daoUsuario.listar());
+			request.setAttribute("msg1", "Salvo com sucesso!");
 			view.forward(request, response);
 
 		} catch (Exception e) {
