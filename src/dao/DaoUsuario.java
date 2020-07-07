@@ -70,6 +70,10 @@ public class DaoUsuario {
 			
 			beansCursoJsp.setCep(resultSet.getString("cep"));
 			beansCursoJsp.setBairro(resultSet.getString("bairro"));
+			beansCursoJsp.setBairro(resultSet.getString("bairro"));
+			beansCursoJsp.setCidade(resultSet.getString("cidade"));
+			beansCursoJsp.setEstado(resultSet.getString("estado"));
+			beansCursoJsp.setIbge(resultSet.getString("ibge"));
 			
 			
 			listar.add(beansCursoJsp);
@@ -110,6 +114,13 @@ public class DaoUsuario {
 			beansCursoJsp.setSenha(resultSet.getString("senha"));
 			beansCursoJsp.setNome(resultSet.getString("nome"));
 			beansCursoJsp.setTelefone(resultSet.getString("telefone"));
+			
+			beansCursoJsp.setCep(resultSet.getString("cep"));
+			beansCursoJsp.setRua(resultSet.getString("rua"));
+			beansCursoJsp.setBairro(resultSet.getString("bairro"));
+			beansCursoJsp.setCidade(resultSet.getString("cidade"));
+			beansCursoJsp.setEstado(resultSet.getString("estado"));
+			beansCursoJsp.setIbge(resultSet.getString("ibge"));
 			
 			return beansCursoJsp;
 		}
@@ -158,13 +169,21 @@ public boolean validarSenha(String senha) throws Exception{
 		
 		
 		try {
-		String sql = "update usuario set login = ?, senha = ? , nome = ?, telefone =? where id = " + usuario.getId();
+		String sql = "update usuario set login = ?, senha = ? , nome = ?, "
+				+ "telefone =?, cep=?, rua=?, bairro=?, cidade=?, estado=?, ibge=? where id = " + usuario.getId();
 		
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString(1, usuario.getLogin());
 		preparedStatement.setString(2, usuario.getSenha());
 		preparedStatement.setString(3, usuario.getNome());
 		preparedStatement.setString(4, usuario.getTelefone());
+		
+		preparedStatement.setString(5, usuario.getCep());
+		preparedStatement.setString(6, usuario.getRua());
+		preparedStatement.setString(7, usuario.getBairro());
+		preparedStatement.setString(8, usuario.getCidade());
+		preparedStatement.setString(9, usuario.getEstado());
+		preparedStatement.setString(10, usuario.getIbge());
 		preparedStatement.executeUpdate();
 		connection.commit();
 		

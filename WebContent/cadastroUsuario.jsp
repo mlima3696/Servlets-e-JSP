@@ -158,6 +158,7 @@ function consultaCep() {
              $("#ibge").val('');
             //CEP pesquisado não foi encontrado.
             alert("CEP não encontrado.");
+            
         }
     });
 
