@@ -29,7 +29,7 @@
 <ul class="form-style-1"> <li>
 		<center><table></center>
 		<tr>
-				<td>Codigo:</td>
+				<td>Código</td>
 				<td><input type="text" readonly="readonly" id="id" name="id" value="${user.id}" class="field-long"></td>
 
 				<td>CEP:</td>
@@ -88,6 +88,7 @@
 				<th>Nome</th>
 				<th>Telefone</th>
 				<th>Editar</th>
+				<th>Telefones</th>
 				<th>Delete</th>
 			</tr>
 			<c:forEach items="${usuarios}" var="user">
@@ -102,6 +103,11 @@
 					<td><a href="salvarUsuario?acao=editar&user=${user.id}"><img
 							alt="Editar" title="Editar" src="resources/img/editar.png"
 							width="20px" height="20px"></a></td>
+							
+					<td><a href="salvarTelefones?user=${user.id}"><img
+							src="resources/img/telefone.png" alt="Telefones" title="Telefones"
+							width="20px" height="20px"></a></td>
+							
 					<td><a href="salvarUsuario?acao=delete&user=${user.id}"><img
 							src="resources/img/excluir.png" alt="Excluir" title="Excluir"
 							width="20px" height="20px"></a></td>
