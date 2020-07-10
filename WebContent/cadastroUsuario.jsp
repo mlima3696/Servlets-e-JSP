@@ -104,7 +104,7 @@
 							alt="Editar" title="Editar" src="resources/img/editar.png"
 							width="20px" height="20px"></a></td>
 							
-					<td><a href="salvarTelefones?user=${user.id}"><img
+					<td><a href="salvarTelefones?acao=addFone&Foneuser=${user.id}"><img
 							src="resources/img/telefone.png" alt="Telefones" title="Telefones"
 							width="20px" height="20px"></a></td>
 							
