@@ -33,14 +33,14 @@
 				<td><input type="text" readonly="readonly" id="id" name="id" value="${user.id}" class="field-long"></td>
 
 				<td>CEP:</td>
-				<td><input type="text" id="cep" name="cep"onblur="consultaCep();" value="${user.cep}"></td>
+				<td><input type="text" id="cep" name="cep"onblur="consultaCep();" value="${user.cep}" placeholder ="Informe um cep válido"></td>
 			</tr>
 			<tr>
 				<td>Login:</td>
 				<td><input type="text" id="login" name="login" value="${user.login}"></td>
 				
 				<td>Rua:</td>
-							<td><input type="text" id="rua" name="rua" value="${user.rua }"></td>
+							<td><input type="text" id="rua" name="rua" value="${user.rua }" placeholder ="Informe a rua do usuário"></td>
 			</tr>
 
 			<tr>
@@ -48,27 +48,27 @@
 				<td><input type="password" id="senha" name="senha" value="${user.senha}"></td>
 				
 				<td>Bairro:</td>
-							<td><input type="text" id="bairro" name="bairro" value="${user.bairro}"></td>
+							<td><input type="text" id="bairro" name="bairro" value="${user.bairro}" placeholder ="Informe o bairro do usuário"></td>
 			</tr>
 			<tr>
 				<td>Nome:</td>
-				<td><input type="text" id="nome" name="nome" value="${user.nome}"></td>
+				<td><input type="text" id="nome" name="nome" value="${user.nome}" placeholder ="Informe o nome do usuário"></td>
 				
 				<td>Cidade:</td>
-							<td><input type="text" id="cidade" name="cidade" value="${user.cidade}"></td>
+							<td><input type="text" id="cidade" name="cidade" value="${user.cidade}" placeholder ="Informe a cidade do usuário"></td>
 			</tr>
 			<tr>
 				<td>Telefone:</td>
-				<td><input type="text" id="telefone" name="telefone" value="${user.telefone}"></td>
+				<td><input type="text" id="telefone" name="telefone" value="${user.telefone}" placeholder ="Informe o telefone do usuário"></td>
 				
 				<td>Estado:</td>
-							<td><input type="text" id="estado" name="estado" value="${user.estado}"></td>
+							<td><input type="text" id="estado" name="estado" value="${user.estado}" placeholder ="Informe o estado do usuário"></td>
 			</tr>
 						
 						
 						<tr>
 							<td>IBGE:</td>
-							<td><input type="text" id="ibge" name="ibge" value="${user.ibge}"></td>
+							<td><input type="text" id="ibge" name="ibge" value="${user.ibge}" placeholder ="Informe o código do IBGE"></td>
 						</tr>
 						<tr>
 			<td><input type="submit" value="Salvar"></td>
