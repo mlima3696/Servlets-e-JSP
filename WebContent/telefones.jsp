@@ -26,11 +26,11 @@
 		<center><table></center>
 						<tr>
 							<td>User:</td>
-							<td><input type="text"  id="id" name="id" readonly="readonly"
-								class="field-long" value="${userEscolhido.id}"></td>
+							<td><input type="text"  id="id" name="id" readonly="true"
+								value="${userEscolhido.id}"></td>
 								
-							<td><input type="text"  id="none" readonly="readonly"
-								name="nome" class="field-long" value="${userEscolhido.nome}"></td>
+							<td><input type="text"  id="none" readonly="true"
+								name="nome"  value="${userEscolhido.nome}"></td>
 						</tr>
 						<tr>
 						<td>Número:</td>

@@ -33,26 +33,24 @@ public class TelefonesServlets extends HttpServlet {
 		
 		try {
 		
-		String user = request.getParameter("user");
 		String acao = request.getParameter("acao");
-		if(acao.endsWith("addFone")) {
+		if(acao.equalsIgnoreCase("addFone")) {
 			
+		String user = request.getParameter("user");
+		BeansCursoJsp beansCursoJsp = daoUsuario.consultar(user);
 		
-		BeansCursoJsp usuario = daoUsuario.consultar(user);
-		
-		request.getSession().setAttribute("userEscolhido", usuario);
-		request.setAttribute("userEscolhido", usuario);
+		request.getSession().setAttribute("userEscolhido", beansCursoJsp);
+		request.setAttribute("userEscolhido", beansCursoJsp);
 		
 		RequestDispatcher view = request.getRequestDispatcher("/telefones.jsp");
-		request.setAttribute("telefones", daoTelefones.listar(usuario.getId()));
+		request.setAttribute("telefones", daoTelefones.listar(beansCursoJsp.getId()));
 		request.setAttribute("msg1", "Salvo com sucesso!");
 		view.forward(request, response);
-		
-			} else if (acao.endsWith("deleteFone")) {
+			} else if (acao.equalsIgnoreCase("deleteFone")) {
 				String foneId = request.getParameter("foneId");
-				daoTelefones.delete("foneId");
+				daoTelefones.delete(foneId);
 			
-		
+			
 		BeansCursoJsp beansCursoJsp = (BeansCursoJsp) request.getSession().getAttribute("userEscolhido");
 		
 		RequestDispatcher view = request.getRequestDispatcher("/telefones.jsp");
@@ -60,6 +58,7 @@ public class TelefonesServlets extends HttpServlet {
 		request.setAttribute("msg1", "Removido com sucesso!");
 		view.forward(request, response);
 			}
+		
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
