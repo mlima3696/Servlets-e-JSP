@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -114,8 +115,11 @@ public class Usuario extends HttpServlet {
 			
 			for (FileItem fileItem : fileItems) {
 				if(fileItem.getFieldName().equals("foto") ) {
-					String foto = new Base64().encodeBase64String(fileItem.get());
-					System.out.println(foto);
+					
+					String fotoBase64 = new Base64().encodeBase64String(fileItem.get());
+					String contentType = fileItem.getContentType();
+					usuario.setFotoBase64(fotoBase64);
+					usuario.setContentType(contentType);
 				}
 			}
 			
