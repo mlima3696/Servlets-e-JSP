@@ -20,6 +20,7 @@ import beans.BeansCursoJsp;
 import dao.DaoUsuario;
 
 @WebServlet("/salvarUsuario")
+@MultipartConfig
 public class Usuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
