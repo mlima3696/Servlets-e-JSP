@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -10,10 +11,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.apache.tomcat.util.codec.binary.Base64;
 
 import beans.BeansCursoJsp;
@@ -112,18 +115,10 @@ public class Usuario extends HttpServlet {
 		
 		try {
 		if(ServletFileUpload.isMultipartContent(request)) {
-			List<FileItem> fileItems = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
-			
-			for (FileItem fileItem : fileItems) {
-				if(fileItem.getFieldName().equals("foto") ) {
-					
-					String fotoBase64 = new Base64().encodeBase64String(fileItem.get());
-					String contentType = fileItem.getContentType();
-					usuario.setFotoBase64(fotoBase64);
-					usuario.setContentType(contentType);
-				}
-			}
-			
+			Part imagemFoto = request.getPart("foto");
+			String fotoBase64= new Base64().encodeBase64String(converteStreamParabyte(imagemFoto.getInputStream()));
+			usuario.setFotoBase64(fotoBase64);;
+			usuario.setContentType(imagemFoto.getContentType());
 		}
 		//FIM File upload de imagens e pdf
 		
@@ -187,6 +182,18 @@ public class Usuario extends HttpServlet {
 			e.printStackTrace();
 			}
 		}
+	}
+	
+	// Converte a entrada de fluxo de dados da imagem para byte[]
+	private static byte[]converteStreamParabyte(InputStream imagem) throws Exception{
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		int reads = imagem.read();
+		while(reads !=-1) {
+			baos.write(reads);
+			reads = imagem.read();
+			
+		}
+		return baos.toByteArray();
 	}
 
 }
