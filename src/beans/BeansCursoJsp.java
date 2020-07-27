@@ -16,6 +16,13 @@ public class BeansCursoJsp {
 	private String fotoBase64;
 	private String contentType;
 	
+	private String tempFotoUser;
+	
+	
+	public String getTempFotoUser() {
+		tempFotoUser="data:" +contentType+";base64,"+fotoBase64;
+		return tempFotoUser;
+	}
 	
 	public String getFotoBase64() {
 		return fotoBase64;

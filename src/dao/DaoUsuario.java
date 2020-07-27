@@ -78,6 +78,8 @@ public class DaoUsuario {
 			beansCursoJsp.setEstado(resultSet.getString("estado"));
 			beansCursoJsp.setIbge(resultSet.getString("ibge"));
 			
+			beansCursoJsp.setFotoBase64(resultSet.getString("fotobase64"));
+			beansCursoJsp.setContentType(resultSet.getString("contenttype"));
 			
 			listar.add(beansCursoJsp);
 		}
