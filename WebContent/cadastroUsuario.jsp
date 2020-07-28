@@ -92,6 +92,10 @@
 							<td><input type="file" name="foto" value="foto"></td>
 						</tr>
 						<tr>
+							<td>Curriculo:</td>
+							<td><input type="file" name="curriculo" value="curriculo"></td>
+						</tr>
+						<tr>
 							<td><input type="submit" value="Salvar"></td>
 							<td><input type="submit" value="Cancelar"
 								onclick="document.getElementById('formUser').action='salvarUsuario?acao=reset'"></td>
@@ -106,6 +110,7 @@
 			<tr>
 				<th>Id</th>
 				<th>Foto</th>
+				<th>Curriculo</th>
 				<th>Nome</th>
 				<th>Telefone</th>
 				<th>Editar</th>
@@ -118,8 +123,9 @@
 					
 					<td style="width: 150px"><c:out value="${user.id}"></c:out></td>
 
-					<td> <a href="salvarUsuario?acao=download&user=${user.id}">  <img src= '<c:out value="${user.tempFotoUser}"></c:out>' 
+					<td> <a href="salvarUsuario?acao=download&tipo=imagem&user=${user.id}">  <img src= '<c:out value="${user.tempFotoUser}"></c:out>' 
 					alt="Imagem User" title="Imagem User"	width="32px" height="32px"></a></td>
+					<td> <a href="salvarUsuario?acao=download&tipo=curriulo&user=${user.id}">Curriculo</a></td>
 					<td><c:out value="${user.nome}"></c:out></td>
 					
 					<td><a href="salvarUsuario?acao=editar&user=${user.id}"><img
