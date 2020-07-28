@@ -105,25 +105,23 @@
 			<caption>Usuários cadastrados</caption>
 			<tr>
 				<th>Id</th>
-				<th>Login</th>
+				<th>Foto</th>
 				<th>Nome</th>
 				<th>Telefone</th>
 				<th>Editar</th>
-				<th>Telefones</th>
 				<th>Delete</th>
+				
 			</tr>
 			<c:forEach items="${usuarios}" var="user">
 				<tr>
 				
 					
 					<td style="width: 150px"><c:out value="${user.id}"></c:out></td>
-					<td style="width: 150px"><c:out value="${user.login}"></c:out>
-					</td>
-					<td><img src= '<c:out value="${user.tempFotoUser}"></c:out>' 
-					alt="Imagem User" title="Imagem User"	width="32px" height="32px"></td>
+
+					<td> <a href="salvarUsuario?acao=download&user=${user.id}">  <img src= '<c:out value="${user.tempFotoUser}"></c:out>' 
+					alt="Imagem User" title="Imagem User"	width="32px" height="32px"></a></td>
 					<td><c:out value="${user.nome}"></c:out></td>
-					<td style="width: 150px"><c:out value="${user.telefone}"></c:out>
-					</td>
+					
 					<td><a href="salvarUsuario?acao=editar&user=${user.id}"><img
 							alt="Editar" title="Editar" src="resources/img/editar.png"
 							width="20px" height="20px"></a></td>

@@ -1,8 +1,9 @@
 package servlet;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
+import java.io.OutputStream;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,8 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.apache.tomcat.util.codec.binary.Base64;
@@ -58,6 +57,30 @@ public class Usuario extends HttpServlet {
 				RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
 				request.setAttribute("usuarios", daoUsuario.listar());
 				view.forward(request, response);
+			}else if(acao.equalsIgnoreCase("download")) {
+				BeansCursoJsp usuario = daoUsuario.consultar(user);
+				if(usuario !=null) {
+					response.setHeader("Content-Disposition", "attachment;filename=arquivo." 
+				+ usuario.getContentType().split("\\/")[1]);
+					
+					//Converte a base64 da imagem do banco para byte[]
+					byte[] imagemFotoBytes = new Base64().decodeBase64(usuario.getFotoBase64());
+					
+					//Coloca os bytes em um objeto de entrada para processar
+					InputStream is = new ByteArrayInputStream(imagemFotoBytes);
+					
+					//Inicio de resposta para o navegador
+					int read=0;
+					byte[] bytes = new byte[1024];
+					OutputStream os = response.getOutputStream();
+					
+					// estrutura para saber se tem conteudo ainda para ser lido (nao esta entrando no metodo)
+					while ((read = is.read(bytes)) !=-1) {
+						os.write(bytes,0, read);
+					}
+					os.flush();
+					os.close();
+				}
 			}
 
 		} catch (Exception e) {
