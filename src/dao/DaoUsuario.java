@@ -187,7 +187,7 @@ public boolean validarSenha(String senha) throws Exception{
 		
 		try {
 		String sql = "update usuario set login = ?, senha = ? , nome = ?, "
-				+ "telefone =?, cep=?, rua=?, bairro=?, cidade=?, estado=?, ibge=?, fotobase64=?,contenttype=?,curriculobase64=?,contentTypeCurriculo+? where id = " + usuario.getId();
+				+ "telefone =?, cep=?, rua=?, bairro=?, cidade=?, estado=?, ibge=?, fotobase64=?,contenttype=?,curriculobase64=?,contentTypeCurriculo=? where id = " + usuario.getId();
 		
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString(1, usuario.getLogin());
