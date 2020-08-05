@@ -84,7 +84,7 @@ public class DaoUsuario {
 			beansCursoJsp.setFotoBase64(resultSet.getString("fotobase64"));
 			beansCursoJsp.setContentType(resultSet.getString("contenttype"));
 			
-			beansCursoJsp.setFotoBase64(resultSet.getString("curriculobase64"));
+			beansCursoJsp.setCurriculoBase64(resultSet.getString("curriculobase64"));
 			beansCursoJsp.setContentTypeCurriculo(resultSet.getString("contenttypecurriculo"));
 			
 			listar.add(beansCursoJsp);
@@ -136,7 +136,7 @@ public class DaoUsuario {
 			beansCursoJsp.setFotoBase64(resultSet.getString("fotobase64"));
 			beansCursoJsp.setContentType(resultSet.getString("contenttype"));
 			
-			beansCursoJsp.setFotoBase64(resultSet.getString("curriculobase64"));
+			beansCursoJsp.setCurriculoBase64(resultSet.getString("curriculobase64"));
 			beansCursoJsp.setContentTypeCurriculo(resultSet.getString("contenttypecurriculo"));
 			
 			return beansCursoJsp;
@@ -187,7 +187,7 @@ public boolean validarSenha(String senha) throws Exception{
 		
 		try {
 		String sql = "update usuario set login = ?, senha = ? , nome = ?, "
-				+ "telefone =?, cep=?, rua=?, bairro=?, cidade=?, estado=?, ibge=? where id = " + usuario.getId();
+				+ "telefone =?, cep=?, rua=?, bairro=?, cidade=?, estado=?, ibge=?, fotobase64=?,contenttype=?,curriculobase64=?,contentTypeCurriculo+? where id = " + usuario.getId();
 		
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString(1, usuario.getLogin());
@@ -201,6 +201,12 @@ public boolean validarSenha(String senha) throws Exception{
 		preparedStatement.setString(8, usuario.getCidade());
 		preparedStatement.setString(9, usuario.getEstado());
 		preparedStatement.setString(10, usuario.getIbge());
+		
+		preparedStatement.setString(11, usuario.getFotoBase64());
+		preparedStatement.setString(12, usuario.getContentType());
+		preparedStatement.setString(13, usuario.getCurriculoBase64());
+		preparedStatement.setString(14, usuario.getContentTypeCurriculo());
+		
 		preparedStatement.executeUpdate();
 		connection.commit();
 		

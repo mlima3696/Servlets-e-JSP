@@ -123,9 +123,12 @@
 					
 					<td style="width: 150px"><c:out value="${user.id}"></c:out></td>
 
-					<td> <a href="salvarUsuario?acao=download&tipo=imagem&user=${user.id}">  <img src= '<c:out value="${user.tempFotoUser}"></c:out>' 
-					alt="Imagem User" title="Imagem User"	width="32px" height="32px"></a></td>
-					<td> <a href="salvarUsuario?acao=download&tipo=curriulo&user=${user.id}">Curriculo</a></td>
+					<td><a
+						href="salvarUsuario?acao=download&tipo=imagem&user=${user.id}">
+							<img src='<c:out value="${user.tempFotoUser}"/>' alt="Foto"
+							title="Foto" width="32px" height="32px">
+					</a></td>
+					<td> <a href="salvarUsuario?acao=download&tipo=curriculo&user=${user.id}">Curriculo</a></td>
 					<td><c:out value="${user.nome}"></c:out></td>
 					
 					<td><a href="salvarUsuario?acao=editar&user=${user.id}"><img
