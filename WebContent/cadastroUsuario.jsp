@@ -89,14 +89,15 @@
 						</tr>
 						<tr>
 							<td>Foto:</td>
-							<td><input type="file" name="foto"><input type="text" style="display: none;" name="fotoTemp" readonly="readonly" value="${user.fotoBase64}"/> </td>
-							<td><input type="file" name="foto"><input type="text" style="display: none;" name="contentType" readonly="readonly" value="${user.contentType}"/> </td>
+							<td><input type="file" name="foto"></td>
+							<td><input type="text" style="display: none;" name="fotoTemp" readonly="readonly" value="${user.fotoBase64}"/> </td>
+							<td><input type="text" style="display: none;" name="contentType" readonly="readonly" value="${user.contentType}"/> </td>
 						</tr>
 						<tr>
 							<td>Curriculo:</td>
 							<td><input type="file" name="curriculo" value="curriculo"></td>
-							<td><input type="file" name="curriculo"><input type="text" style="display: none;" name="fotoTempPDF" readonly="readonly" value="${user.curriculoBase64}"/> </td>
-							<td><input type="file" name="curriculo"><input type="text" style="display: none;" name="contentTypePDF" readonly="readonly" value="${user.contentTypeCurriculo}"/> </td>
+							<td><input type="text" style="display: none;" name="fotoTempPDF" readonly="readonly" value="${user.curriculoBase64}"/> </td>
+							<td><input type="text" style="display: none;" name="contentTypePDF" readonly="readonly" value="${user.contentTypeCurriculo}"/> </td>
 						</tr>
 						<tr>
 							<td><input type="submit" value="Salvar"></td>
@@ -122,18 +123,32 @@
 			</tr>
 			<c:forEach items="${usuarios}" var="user">
 				<tr>
-				
-					
-					<td style="width: 150px"><c:out value="${user.id}"></c:out></td>
+					<td><c:out value="${user.id}"></c:out></td>
 
-					<td><a
-						href="salvarUsuario?acao=download&tipo=imagem&user=${user.id}">
-							<img src='<c:out value="${user.tempFotoUser}"/>' alt="Foto"
-							title="Foto" width="32px" height="32px">
-					</a></td>
-					<td> <a href="salvarUsuario?acao=download&tipo=curriculo&user=${user.id}">Curriculo</a></td>
-					<td><c:out value="${user.nome}"></c:out></td>
+					<c:if test="${user.fotoBase64.isEmpty()==false}">
+						<td><a
+							href="salvarUsuario?acao=download&tipo=imagem&user=${user.id}">
+								<img src='<c:out value="${user.tempFotoUser}"/>' alt="Foto"
+								title="Foto" width="32px" height="32px">
+						</a></td>
+					</c:if>
+					<c:if test="${user.fotoBase64.isEmpty()==true}">
+						<td><img alt="Imagem User" src="resources/img/userpadrao.png"
+							width="32px" height="32px" onclick="alert('Não possui Imagem!')"></td>
+					</c:if>
+
+					<c:if test="${user.curriculoBase64.isEmpty()==false}">
+						<td><a
+							href="salvarUsuario?acao=download&tipo=curriculo&user=${user.id}"><img
+								alt="Curriculo" src="resources/img/pdf.png" width="32px"
+								height="32px"></a></td>
+					</c:if>
+					<c:if test="${user.curriculoBase64.isEmpty()==true}">
+						<td><img alt="Imagem User" src="resources/img/sempdf.png" 
+							width="32px" height="32px" onclick="alert('Não possui PDF!')"></td>
+					</c:if>
 					
+					<td><c:out value="${user.nome}"></c:out></td>
 					<td><a href="salvarUsuario?acao=editar&user=${user.id}"><img
 							alt="Editar" title="Editar" src="resources/img/editar.png"
 							width="20px" height="20px"></a></td>

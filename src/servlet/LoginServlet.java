@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 
 import beans.BeansCursoJsp;
 import dao.Daologin;
@@ -33,12 +34,19 @@ public class LoginServlet extends HttpServlet {
 			String login = request.getParameter("login");
 			String senha = request.getParameter("senha");
 
+			if(login != null && !login.isEmpty() && senha !=null && !senha.isEmpty()) {
 			if (daologin.validarLogin(login, senha)) {// Acesso ok
 				RequestDispatcher dispatcher = request.getRequestDispatcher("acessoliberado.jsp");
 				dispatcher.forward(request, response);
 			} else {// Acesso negado
 				RequestDispatcher dispatcher = request.getRequestDispatcher("acessonegado.jsp");
 				dispatcher.forward(request, response);
+				}
+
+			}else {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+				dispatcher.forward(request, response);
+				//JOptionPane.showMessageDialog(null, "Digite o login e a senha para prosseguir!");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
